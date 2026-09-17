@@ -112,7 +112,7 @@ $Login2 = $me.login
 if (-not $Owner) { $Owner = $Login2 }
 Say "  已登录账号 : $Login2"
 Say "  目标仓库   : $Owner/$Repo"
-if ($Owner -ne $Login2 -and -not (Test-Path variable:me.organizations)) {
+if ($Owner -ne $Login2) {
     Say '  注意：目标是别的账号/组织，令牌需要有该组织的建仓权限。' 'Yellow'
 }
 
@@ -168,9 +168,19 @@ $headBranch = git branch --show-current
 if (-not $headBranch) { $headBranch = $Branch }
 if ($headBranch -ne $Branch) { git branch -M $headBranch $Branch; $headBranch = $Branch }
 
-# 用 -c url.<token>@.insteadOf 临时重写，令牌不落盘
-git -c "url.$authedUrl.insteadOf=https://github.com/" push -u origin $Branch 2>&1 | ForEach-Object { Say "  $_" }
-if ($LASTEXITCODE -ne 0) { throw "git push 失败（exit $LASTEXITCODE）" }
+# 先试已存凭据（GCM / Windows 凭据管理器）；失败再把远端临时指向带令牌 URL，推完立刻改回
+git push -u origin $Branch 2>&1 | ForEach-Object { Say "  $_" }
+if ($LASTEXITCODE -ne 0) {
+    Say '  已存凭据不可用，改用令牌直推（推送后立即还原远端 URL）...' 'Yellow'
+    git remote set-url origin $authedUrl
+    try {
+        git push -u origin $Branch 2>&1 | ForEach-Object { Say "  $_" }
+        if ($LASTEXITCODE -ne 0) { throw "git push 失败（exit $LASTEXITCODE）" }
+    } finally {
+        git remote set-url origin $cleanUrl
+        Say "  origin 已还原为 $cleanUrl"
+    }
+}
 
 # ---------------------------------------------------------------- 6. 校验
 Say "`n== 6/6 校验远端 ==" 'Cyan'
