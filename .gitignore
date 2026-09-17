@@ -1,0 +1,43 @@
+# ---------- 构建产物 ----------
+build/
+out/
+bin/
+obj/
+Debug/
+Release/
+x64/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.exe
+*.dll
+*.sys
+*.map
+
+# ---------- 运行期数据 ----------
+*.log
+host_log.txt
+nl_configs/
+dumps/
+*.dmp
+*.ini.bak
+
+# ---------- IDE / 编辑器 ----------
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+
+# ---------- 系统 ----------
+Thumbs.db
+desktop.ini
+.DS_Store

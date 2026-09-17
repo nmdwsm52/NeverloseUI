@@ -1,0 +1,15 @@
+* text=auto eol=crlf
+
+*.cpp  text eol=crlf
+*.h    text eol=crlf
+*.cs   text eol=crlf
+*.bat  text eol=crlf
+*.md   text eol=lf
+*.ini  text eol=crlf
+*.txt  text eol=crlf
+
+*.png  binary
+*.ico  binary
+*.ttf  binary
+*.exe  binary
+*.dll  binary

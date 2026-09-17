@@ -1,0 +1,180 @@
+[+] MCP 已连接: avx-debugger  (host=AVX.McpHost.exe)
+=== decompile  ===
+//----- sub_7FF9BF58CD75 (0x7FF9BF58CD75) -----
+__int64 __fastcall sub_7FF9BF58CD75(__int64 a5, __int64 a6, __int64 a7)
+{
+    __int64 v1;  // r15
+    __int64 v2;  // r13
+    __int64 v3;  // rax
+    __int64 v4;  // r14
+    __int64 v5;  // r12
+    __int64 v6;  // rcx
+    __int64 v7;  // rdx
+    __int64 v8;  // r9
+    __int64 v9;  // rbp
+    __int64 v10;  // r8
+    __int64 v11;  // rsi
+    __int64 v12;  // rbx
+    __int32 v31;  // [rsp+0x20]
+    __int128 v32;  // [rsp+0x30]
+    __int64 v33;  // [rsp+0x48]
+    __int64 v34;  // [rsp+0x50]
+    __int64 v35;  // [rsp+0x58]
+    __int64 v36;  // [rsp+0x60]
+    __int64 v37;  // [rsp+0x68]
+    __int32 v38;  // [rsp+0x98]
+    __int32 v39;  // [rsp+0xA0]
+    __int32 v40;  // [rsp+0xA8]
+    v1 = ebp;
+    do
+    {
+        v2 = *(__int64*)(rsi + (rbx * 8) + 0xB58);
+        // movss xmm0,[r15+r13+43Ch]
+        // comiss xmm0,xmm6
+        if (flags) break;
+        v3 = *(__int64*)(v1 + v2);
+        v4 = r14d + 1;
+        *(__int64*)(rdi + 0x30) = v3;
+        v3 = *(__int64*)(v1 + v2 + 0x8);
+        *(__int64*)(rdi + 0x38) = *(__int64*)(rdi + 0x38) | v3;
+        v3 = *(__int64*)(v1 + v2 + 0x10);
+        *(__int64*)(rdi + 0x40) = *(__int64*)(rdi + 0x40) | v3;
+        // movsd xmm0,[r15+r13+18h]
+        // movsd [rdi+48h],xmm0
+        v3 = *(__int32*)(v1 + v2 + 0x20);
+        *(__int32*)(rdi + 0x50) = (unsigned __int32)v3;
+        // movsd xmm0,[r15+r13+430h]
+        // movsd [rdi+460h],xmm0
+        v3 = *(__int32*)(v1 + v2 + 0x438);
+        *(__int32*)(rdi + 0x468) = (unsigned __int32)v3;
+        v3 = *(__int32*)(v1 + v2 + 0x24);
+        *(__int32*)(rdi + 0x54) = (unsigned __int32)v3;
+        v3 = *(__int32*)(v1 + v2 + 0x28);
+        *(__int32*)(rdi + 0x58) = (unsigned __int32)v3;
+        v39 = ebp;
+        if (*(__int32*)(v1 + v2 + 0x2C) > 0)
+        {
+            v4 = v2 + 0x30;
+            v4 += v1;
+            do
+            {
+                v5 = (__int32)*(__int32*)(rdi + 0x500);
+                if ((unsigned __int32)v5 == *(__int32*)(rdi + 0x510))
+                {
+                    v3 = *(__int32*)(rdi + 0x514);
+                    v3 = ((unsigned __int32)v3) & 0xC0000000;
+                    if (!v3) goto LABEL_7FF9BF58CE4E;
+                    if ((unsigned __int32)v3 == 0x80000000)
+                    {
+                        LABEL_7FF9BF58CE4E:
+                        v6 = *(__int32*)(rdi + 0x510);
+                        if (v6 > 0x7FFFFFFE)
+                        {
+                            v3 = sub_7FF9D8F73DA0(*(__int32*)(rdi + 0x510), 0x1, v4);  // call [client.dll+19777C8]
+                        }
+                        v6 = *(__int32*)(rdi + 0x510);
+                        v8 = 0x20;
+                        v7 = *(__int32*)(rdi + 0x514);
+                        v7 &= 0x3FFFFFFF;
+                        v9 = v6 + 0x1;
+                        v3 = sub_7FF9D8F73C20(*(__int32*)(rdi + 0x510), v7 & 0x3FFFFFFF, v9, 0x20);  // call [client.dll+19777D8]
+                        v11 = (unsigned __int32)v3;
+                        if ((unsigned __int32)v3 < v9)
+                        {
+                            if (((unsigned __int32)v3 != 0) || (v9 > -0x1)) goto LABEL_7FF9BF58CEA1;
+                            v11 = 0xFFFFFFFF;
+                        }
+                        v8 = (__int32)*(__int32*)(rdi + 0x510);
+                        v6 = *(__int64*)(rdi + 0x508);
+                        v8 = v8 << 0x5;
+                        v3 = sub_7FF9D8F73CA0(*(__int64*)(rdi + 0x508), ((*(__int32*)(rdi + 0x514) & 0xC0000000) == 0) ? 1 : 0, v10 << 0x5, v8 << 0x5);  // call [client.dll+19777D0]
+                        *(__int64*)(rdi + 0x508) = v3;
+                        v3 = *(__int32*)(rdi + 0x514);
+                        if (((unsigned __int32)v3 & 0xC0000000) != 0)
+                        {
+                            v3 = ((unsigned __int32)v3) & 0x3FFFFFFF;
+                            *(__int32*)(rdi + 0x514) = (unsigned __int32)v3;
+                        }
+                        *(__int32*)(rdi + 0x510) = v11;
+                    }
+                }
+                *(__int32*)(rdi + 0x500) = *(__int32*)(rdi + 0x500) + 1;
+                v3 = v5 << 0x5;
+                v3 += (*(__int64*)(rdi + 0x508));
+                *(__int128*)(v3) = *(__int128*)(v4);
+                v4 += 0x20;
+                *(__int128*)(v3 + 0x10) = *(__int128*)(v4 + 0x10);
+                v3 = a5;
+                v3 = ((unsigned __int32)v3) + 1;
+                a5 = (unsigned __int32)v3;
+            }
+            while ((unsigned __int32)v3 < *(__int32*)(v1 + v2 + 0x2C));
+            v11 = a6;
+            v9 = 0;
+        }
+        v3 = a7;
+        v1 += 0x440;
+        v7 = *(__int32*)(v11 + (rbx * 8) + 0xB50);
+        v3 = ((unsigned __int32)v3) + 1;
+        v40 = (unsigned __int32)v3;
+        if ((unsigned __int32)v3 >= v7) break;
+    }
+    while ((unsigned __int32)v3 < v7);
+    v3 = (__int32)v38;
+    v7 -= ((unsigned __int32)v4);
+    v12 = v3 + (v3 * 2);
+    if ((v7 > 0) && ((unsigned __int32)v4 > 0))
+    {
+        v6 = *(__int64*)(v11 + (v12 * 8) + 0xB58);
+        v3 = (__int32)v7;
+        v10 = v3 * 0x440;
+        v3 = (__int32)(unsigned __int32)v4;
+        v3 = sub_7FF9C0395BB0(*(__int64*)(v11 + (v12 * 8) + 0xB58), v7 + v6, v3 * 0x440);
+    }
+    *(__int32*)(v11 + (v12 * 8) + 0xB50) = *(__int32*)(v11 + (v12 * 8) + 0xB50) - (unsigned __int32)v4;
+    v12 = *(__int64*)(rdi + 0x508);
+    v11 = (__int32)*(__int32*)(rdi + 0x500);
+    v11 = v11 << 0x5;
+    v11 += v12;
+    if (v12 != v11)
+    {
+        do
+        {
+            // comiss xmm6,[rbx]
+            if (v12 <= v11) goto LABEL_7FF9BF58D033;
+            v3 = (__int32)*(__int32*)(rdi + 0x5C);
+            if ((unsigned __int32)v3 != 0x20)
+            {
+                v3 += 0x3;
+                v3 = v3 << 0x5;
+                *(__int128*)(v3 + rdi) = *(__int128*)(v12);
+                *(__int128*)(v3 + rdi + 0x10) = *(__int128*)(v12 + 0x10);
+                *(__int32*)(rdi + 0x5C) = *(__int32*)(rdi + 0x5C) + 1;
+            }
+            else
+            {
+                v3 = sub_7FF9D8E4F570("WARNING: Client reached the maximum number of sub-tick moves this tick; ignoring moves until the next tick\n");  // call [client.dll+19777E8]
+            }
+            ++v9;
+            v12 += 0x20;
+        }
+        while (v12 != v11);
+    }
+    LABEL_7FF9BF58D033:
+    v3 = *(__int32*)(rdi + 0x500);
+    v3 = ((unsigned __int32)v3) - v9;
+    if (((unsigned __int32)v3 > 0) && (v9 > 0))
+    {
+        v3 = sub_7FF9C0395BB0(*(__int64*)(rdi + 0x508), v7 + v6, v10 << 0x5);
+    }
+    *(__int32*)(rdi + 0x500) = *(__int32*)(rdi + 0x500) - v9;
+    return v3;
+    do
+    {
+        v3 = v11 + v37;
+    // cdq (sign extend None)
+        v3 = ((unsigned __int32)v3) - v7;
+        v3 = ((unsigned __int32)v3) >> 0x1;
+        v11 = (unsigned __int32)v3;
+    } while ((unsigned __int32)v3 < v37);
+}

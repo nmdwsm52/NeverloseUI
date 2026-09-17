@@ -1,0 +1,27 @@
+[+] MCP 已连接: avx-debugger  (host=AVX.McpHost.exe)
+=== decompile  ===
+//----- sub_7FF9BF5901E0 (0x7FF9BF5901E0) -----
+__int64 __fastcall sub_7FF9BF5901E0(__int64 a2)
+{
+    __int64 v1;  // rbx
+    __int64 v4;  // rax
+    __int64 v31;  // [rsp+0x38]
+    __int64 v32;  // [rsp+0x40]
+    v1 = a2;
+    v4 = sub_7FF9BEBD7050(&unk_7FF9C0E37A18, 0xFFFFFFFF);
+    // movss [rsp+38h],xmm0
+    v4 = sub_7FF9BEBD7050(&unk_7FF9C0E37A28, 0xFFFFFFFF);
+    v5 = &v31;
+    v3 = &v32;
+    // movss [rsp+40h],xmm0
+    v4 = sub_7FF9BEBCF570(v1, &v32, &v31);
+    v5 = &v31;
+    // movss [rbx],xmm0
+    v3 = &v32;
+    v31 = 0x42480000;
+    v2 = v1 + 0x8;
+    v32 = 0xC2480000;
+    v4 = sub_7FF9BEBCF570(v1 + 0x8, &v32, &v31);
+    // movss [rbx+8],xmm0
+    return v4;
+}

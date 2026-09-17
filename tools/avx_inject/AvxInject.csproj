@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    AvxInject —— 用 AVX-Debugger 自己的内核桥接（AVXKernel.sys）把 DLL 手动映射进目标进程。
+    走的代码路径与 GUI 里 InjectPanel 的“注入”按钮完全一致：
+      KernelSession.TryOpen() -> KernelBridge.ManualMap() -> ManualMapQuery() 轮询握手。
+    这里只是把它做成命令行，方便脚本化 / Agent 调用。
+
+    AVX 调试器输出目录可用 -p:AvxDir=... 覆盖。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>AvxInject</AssemblyName>
+    <RootNamespace>AvxInject</RootNamespace>
+    <AvxDir Condition="'$(AvxDir)' == ''">D:\AVX-Debugger\AVX-Debugger\src\AVX.App\bin\Debug\net9.0-windows</AvxDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="AVX.Core">
+      <HintPath>$(AvxDir)\AVX.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(AvxDir)\Iced.dll" CopyToOutputDirectory="PreserveNewest" Link="Iced.dll" />
+    <None Include="$(AvxDir)\System.Security.Cryptography.ProtectedData.dll"
+          CopyToOutputDirectory="PreserveNewest"
+          Link="System.Security.Cryptography.ProtectedData.dll" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+[+] MCP 已连接: avx-debugger  (host=AVX.McpHost.exe)
+=== decompile  ===
+//----- sub_7FF9BF592210 (0x7FF9BF592210) -----
+__int64 __fastcall sub_7FF9BF592210(__int64 a5, __int64 a6, __int64 a7)
+{
+    __int64 v1;  // rcx
+    __int64 v2;  // rax
+    __int64 v3;  // rbx
+    __int32 v31;  // [rsp+0x20]
+    __int32 v32;  // [rsp+0x28]
+    __int32 v33;  // [rsp+0x30]
+    __int32 v34;  // [rsp+0x38]
+    __int64 v35;  // [rsp+0x60]
+    __int64 v36;  // [rsp+0x98]
+    v1 = qword_7FF9C0E38348;
+    v2 = *(__int64*)(v1);
+    v2 = call_0x7FF9BF592220();  // call qword [rax+0D0h]
+    v3 = v2 ? 0x1 : 0x3;
+    v2 = sub_7FF9D8EFAEE0(dword_7FF9C0E37248, v3);  // call [client.dll+19777F8]
+    if ((unsigned __int8)v2 != 0)
+    {
+        v1 = dword_7FF9C0E37248;
+        v5 = "Last server executed command is %d on tick %d.  Duplicating command %d %dx to catch up.  New outgoing command is %d\n";
+        v34 = edi;
+        v6 = r12d;
+        v33 = r14d;
+        v32 = ebp;
+        v31 = r13d;
+        v2 = sub_7FF9D8EFB1D0(dword_7FF9C0E37248, v3, "Last server executed command is %d on tick %d.  Duplicating command %d %dx to catch up.  New outgoing command is %d\n", r12d, r13d, ebp, r14d, edi);  // call [client.dll+19777F0]
+    }
+    v7 = a5;
+    v3 = a6;
+    v8 = a7;
+    return v2;
+}

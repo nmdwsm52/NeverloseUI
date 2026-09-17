@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    AvxMcp —— AVX-Debugger MCP 服务器的命令行客户端。
+    调试器把全部能力（read_memory / disassemble / decompile / string_scan / ue_* ...）
+    通过 stdio + 行分隔 JSON-RPC 暴露出来，这个工具就是给它发请求、打印结果的壳，
+    方便脚本化 / Agent 直接"用调试器"干活。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>AvxMcp</AssemblyName>
+    <RootNamespace>AvxMcp</RootNamespace>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AvxDir Condition="'$(AvxDir)' == ''">D:\AVX-Debugger\AVX-Debugger\src\AVX.App\bin\Debug\net9.0-windows</AvxDir>
+  </PropertyGroup>
+</Project>
